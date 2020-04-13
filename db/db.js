@@ -3,8 +3,11 @@ dotenv.config()
 
 
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb+srv://admin:${process.env.PASSWORD}@cluster0-euy6h.mongodb.net/test?retryWrites=true&w=majority`, {
-    useNewUrlParser: true, useUnifiedTopology: true
+mongoose.connect(process.env.DB_CONFIG, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
 }).then(() => {
     console.log('connected to db')
 })

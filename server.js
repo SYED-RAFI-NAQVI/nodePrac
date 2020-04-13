@@ -2,8 +2,12 @@ const express = require('express')
 const app = express()
 
 require('./db/db')
+const userModel = require('./server/models')
+
 
 app.set('view engine', 'ejs');
+
+app.use(express.json(), express.urlencoded({ extended: true }));
 
 
 app.get('/signup', (req, res) => {
@@ -11,9 +15,16 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    console.log(req)
-    // res.send(req.body.name)
-    res.send(req)
+    const user = new userModel({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    })
+    user.save().then(() => {
+        res.send("saved")
+    }).catch((err) => {
+        console.log(err)
+    })
 })
 
 app.get('/login', (req, res) => {
