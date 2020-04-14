@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 require('./db/db')
-const userModel = require('./server/models')
+const { userModel, contactModel } = require('./server/models')
 
 
 app.set('view engine', 'ejs');
@@ -29,6 +29,46 @@ app.post('/signup', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.render('login')
+})
+
+app.post('/login', (req, res) => {
+    const user = {
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    userModel.findOne(user, (err, user) => {
+        if (err) {
+            res.json({
+                Message: 'Error'
+            })
+        }
+        if (!user) {
+            res.send("Not Found 😔 <br> Come Back After Signing Up 👍")
+        }
+        res.json({
+            id: user._id,
+            Message: 'Success'
+        })
+    })
+
+})
+
+app.get('/contacts', (req, res) => {
+    res.render('contact')
+})
+
+app.post('/contacts', (req, res) => {
+    const contact = new contactModel({
+        name: req.body.name,
+        contact: req.body.contact
+    })
+
+    contact.save().then((result) => {
+        res.send(result)
+    }).catch((err) => {
+        console.log(err)
+    })
 })
 
 
