@@ -3,24 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Login Page</title>
+    <title>Contacts Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
   </head>
   <body>
     <div>
-      <h1>Welcome to Contacts Page</h1>
+      <h1>Welcome to Contacts</h1>
       <div>
-        <form action="/contacts" method="POST">
-          Name Of Contact: <input type="text" name="name" />
-          <br />
-          Number Of Contact: <input type="Number" name="contact" />
-          <br />
-          <input type="submit" name="submit" value="Submit" />
-        </form>
+        <% for(var i=0; i<contacts.length; i++) {%>
+            <li><%= contacts[i].name %> : <%= contacts[i].contact %></li>
+        <% } %>
       </div>
-      <div></div>
     </div>
   </body>
 </html>

@@ -55,7 +55,11 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/contacts', (req, res) => {
-    res.render('contact')
+    contactModel.find().then((result) => {
+        res.render('viewContacts', { contacts: result })
+    }).catch((err) => {
+        console.log(err)
+    })
 })
 
 app.post('/contacts', (req, res) => {
