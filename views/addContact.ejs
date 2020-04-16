@@ -26,23 +26,24 @@
         <br>
         <br>
         <div>
-          <h3>Contacts</h3>
-          <ul style="display: inline;">
-            <% if(contacts.length > 0){ %>
+          <% if(contacts.length > 0){ %>
+            <h3>Contacts</h3>
+            <ul style="display: inline;">
               <% for(var i=0; i<contacts.length; i++) {%>
                   <li><%= contacts[i].name %> : <%= contacts[i].contact %></li>
                   <button type="delete" name="delete">
                     <a href="/del/<%= contacts[i]._id %>"> Delete  </a>
                   </button>
+
                   <br>
                   <br>
                   <br>
                   <br>
               <% } %>
+            </ul>
             <% } else{ %>
-                <h3>Not Added Yet 🤷‍♂️</h>
+                <h3>No Contact Added Yet 🤷‍♂️</h>
             <% } %>
-          </ul>
         </div>
       </div>
     </div>
