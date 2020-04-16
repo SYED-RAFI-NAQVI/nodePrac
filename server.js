@@ -56,7 +56,7 @@ app.post('/login', (req, res) => {
 
 app.get('/contacts', (req, res) => {
     contactModel.find().then((result) => {
-        res.render('viewContacts', { contacts: result })
+        res.render('addContact', { contacts: result })
     }).catch((err) => {
         console.log(err)
     })
@@ -69,12 +69,19 @@ app.post('/contacts', (req, res) => {
     })
 
     contact.save().then((result) => {
-        res.send(result)
+        res.redirect('contacts')
     }).catch((err) => {
         console.log(err)
     })
 })
 
+app.get('/del/:id', (req, res) => {
+    contactModel.findOneAndDelete(req.params.id).then(() => {
+        res.redirect('/contacts')
+    }).catch((err) => {
+        console.log(err)
+    })
+})
 
 app.get('/', (req, res) => {
     res.render('index')

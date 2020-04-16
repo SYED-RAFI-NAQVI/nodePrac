@@ -20,7 +20,26 @@
           <input type="submit" name="submit" value="Submit" />
         </form>
       </div>
-      <div></div>
+      <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div></div>
+          <% if(contacts.length > 0){ %>
+              <% for(var i=0; i<contacts.length; i++) {%>
+                  <li style="display: inline;"><%= contacts[i].name %> : <%= contacts[i].contact %></li>
+                  <li style="display: inline;">
+                      <button type="delete" name="delete">
+                          <a href="/del/<%= contacts[i]._id %>"> Delete  </a>
+                      </button>
+                  </li>
+              <% } %>
+          <% } else{ %>
+              <h3>Not Added Yet 🤷‍♂️</h>
+          <% } %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
