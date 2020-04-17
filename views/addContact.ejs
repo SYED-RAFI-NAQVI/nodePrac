@@ -31,6 +31,7 @@
             <ul style="display: inline;">
               <% for(var i=0; i<contacts.length; i++) {%>
                   <li><%= contacts[i].name %> : <%= contacts[i].contact %></li>
+                  <button>Update</button>
                   <button type="delete" name="delete">
                     <a href="/del/<%= contacts[i]._id %>"> Delete  </a>
                   </button>
