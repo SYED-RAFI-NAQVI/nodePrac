@@ -14,15 +14,15 @@
     <header>
       <div class="ui container">
         <div class="ui inverted blue icon menu">
-          <div class="active item">
+          <div class="item">
             <i class="home icon"></i>
-            <a href="#">
+            <a href="http://localhost:3000/">
               Home
             </a>
           </div>
           <div class="right item">
             <i class="sign in alternate icon"></i>
-            <a href="#">
+            <a href="http://localhost:3000/login">
               Login
             </a>
           </div>
@@ -31,16 +31,21 @@
     </header>
 
     <div class="ui container">
-      <h1>Login Page</h1>
+      <h1>Sign Up</h1>
       <div class="ui form">
         <form type="signup" action="signup" method="POST">
-          <div class="two wide field">
-            Name:
-            <input type="text" name="name" />
-            Gmail:
-            <input type="text" name="email" />
-            Password:
-            <input type="password" name="password" />
+            <div class="two wide field">
+              Name:
+              <input type="text" name="name" />
+            </div>
+            <div class="two wide field">
+              Gmail:
+              <input type="text" name="email" />
+            </div>
+            <div class="two wide field">
+              Password:
+              <input type="password" name="password" />
+            </div>
             <input type="submit" name="submit" value="Submit" />
           </div>
         </form>

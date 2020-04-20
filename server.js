@@ -2,86 +2,19 @@ const express = require('express')
 const app = express()
 
 require('./db/db')
-const { userModel, contactModel } = require('./server/models')
-
 
 app.set('view engine', 'ejs');
 
 app.use(express.json(), express.urlencoded({ extended: true }));
 
+const signup = require('./routes/signup')
+const login = require('./routes/login')
+const contacts = require('./routes/contacts')
 
-app.get('/signup', (req, res) => {
-    res.render('signup')
-})
 
-app.post('/signup', (req, res) => {
-    const user = new userModel({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    })
-    user.save().then(() => {
-        res.send("saved")
-    }).catch((err) => {
-        console.log(err)
-    })
-})
-
-app.get('/login', (req, res) => {
-    res.render('login')
-})
-
-app.post('/login', (req, res) => {
-    const user = {
-        email: req.body.email,
-        password: req.body.password
-    }
-
-    userModel.findOne(user, (err, user) => {
-        if (err) {
-            res.json({
-                Message: 'Error'
-            })
-        }
-        if (!user) {
-            res.send("Not Found 😔 <br> Come Back After Signing Up 👍")
-        }
-        res.json({
-            id: user._id,
-            Message: 'Success'
-        })
-    })
-
-})
-
-app.get('/contacts', (req, res) => {
-    contactModel.find().then((result) => {
-        res.render('contact', { contacts: result })
-    }).catch((err) => {
-        console.log(err)
-    })
-})
-
-app.post('/contacts', (req, res) => {
-    const contact = new contactModel({
-        name: req.body.name,
-        contact: req.body.contact
-    })
-
-    contact.save().then((result) => {
-        res.redirect('contacts')
-    }).catch((err) => {
-        console.log(err)
-    })
-})
-
-app.get('/del/:id', (req, res) => {
-    contactModel.findOneAndDelete(req.params.id).then(() => {
-        res.redirect('/contacts')
-    }).catch((err) => {
-        console.log(err)
-    })
-})
+app.use('/', signup)
+app.use('/', login)
+app.use('/', contacts)
 
 app.get('/', (req, res) => {
     res.render('index')
