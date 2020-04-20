@@ -56,7 +56,7 @@ app.post('/login', (req, res) => {
 
 app.get('/contacts', (req, res) => {
     contactModel.find().then((result) => {
-        res.render('addContact', { contacts: result })
+        res.render('contact', { contacts: result })
     }).catch((err) => {
         console.log(err)
     })

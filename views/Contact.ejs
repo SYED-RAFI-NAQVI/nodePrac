@@ -5,48 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Login Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <script src="main.js"></script>
   </head>
   <body>
-    <div>
-      <h1>Welcome here to add Contacts</h1>
-      <div>
-        <form action="/contacts" method="POST">
-          Name Of Contact: <input type="text" name="name" />
-          <br />
-          Number Of Contact: <input type="Number" name="contact" />
-          <br />
-          <input type="submit" name="submit" value="Submit" />
-        </form>
-      </div>
-      <div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div>
-          <% if(contacts.length > 0){ %>
-            <h3>Contacts</h3>
-            <ul style="display: inline;">
-              <% for(var i=0; i<contacts.length; i++) {%>
-                  <li><%= contacts[i].name %> : <%= contacts[i].contact %></li>
-                  <button>Update</button>
-                  <button type="delete" name="delete">
-                    <a href="/del/<%= contacts[i]._id %>"> Delete  </a>
-                  </button>
 
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-              <% } %>
-            </ul>
-            <% } else{ %>
-                <h3>No Contact Added Yet 🤷‍♂️</h>
-            <% } %>
+    <header>
+      <div class="ui container">
+        <div class="ui inverted blue icon menu">
+          <div class="active item">
+            <i class="user circle icon"></i>
+            <a href="#">
+              Profile
+            </a>
+          </div>
+          <div class="right item">
+            <i class="sign out alternate icon"></i>
+            <a href="#">
+              logout
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
+
+    <div class="ui container">
+      <h1>Add Contacts</h1>
+        <div class="ui form">
+          <form action="/contacts" method="POST">
+              <div class="two wide field">
+                Name Of Contact: <input type="text" name="name" />
+                <br />
+              </div>
+              <div class="two wide field">
+                Number Of Contact: <input type="Number" name="contact" />
+                <br />
+              </div>
+              <input type="submit" name="submit" value="Submit" />
+              </div>
+            </form>
+        </div>
+        <div class="ui divider"></div>
+            <div class="ui container">
+                <% if(contacts.length > 0){ %>
+                  <h2>Contacts</h2>
+                  <ul style="display: inline;">
+                    <% for(var i=0; i<contacts.length; i++) {%>
+                        <li><%= contacts[i].name %> : <%= contacts[i].contact %></li>
+                        <button>Update</button>
+                        <button type="delete" name="delete">
+                          <a href="/del/<%= contacts[i]._id %>"> Delete  </a>
+                        </button>
+                        <div class="ui divider"></div>
+                    <% } %>
+                  </ul>
+                  <% } else{ %>
+                      <h3>No Contact Added Yet 🤷‍♂️</h>
+                  <% } %>
+              </div>
+            </div>
+          </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
   </body>
 </html>

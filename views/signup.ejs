@@ -7,22 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     />
-    <script src="main.js"></script>
   </head>
   <body>
-    <div>
-      <h1>Welcome to Login Page</h1>
-      <form type="signup" action="signup" method="POST">
-        Name: <input type="text" name="name" />
-        <br />
-        Gmail: <input type="text" name="email" />
-        <br />
-        Password: <input type="password" name="password" />
-        <br />
-        <input type="submit" name="submit" value="Submit" />
-      </form>
+    <header>
+      <div class="ui container">
+        <div class="ui inverted blue icon menu">
+          <div class="active item">
+            <i class="home icon"></i>
+            <a href="#">
+              Home
+            </a>
+          </div>
+          <div class="right item">
+            <i class="sign in alternate icon"></i>
+            <a href="#">
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="ui container">
+      <h1>Login Page</h1>
+      <div class="ui form">
+        <form type="signup" action="signup" method="POST">
+          <div class="two wide field">
+            Name:
+            <input type="text" name="name" />
+            Gmail:
+            <input type="text" name="email" />
+            Password:
+            <input type="password" name="password" />
+            <input type="submit" name="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
   </body>
 </html>
