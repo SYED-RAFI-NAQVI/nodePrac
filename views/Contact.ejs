@@ -6,7 +6,6 @@
     <title>Login Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <script src="main.js"></script>
   </head>
   <body>
 
@@ -52,6 +51,7 @@
         <div class="ui divider"></div>
             <div class="ui container">
                 <% if(contacts.length > 0){ %>
+                  <% console.log(contacts) %>
                   <h2>Contacts</h2>
                   <ul style="display: inline;">
                     <% for(var i=0; i<contacts.length; i++) {%>

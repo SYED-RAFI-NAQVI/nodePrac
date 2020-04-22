@@ -46,11 +46,32 @@
               Password:
               <input type="password" name="password" />
             </div>
+            <div class="two wide field">
+              Confirm Password:
+              <input type="password" name="confirmPassword" />
+            </div>
             <input type="submit" name="submit" value="Submit" />
           </div>
         </form>
       </div>
+      <div class="ui container">
+        <% if (locals.errors) { %>
+          <ul>
+              <% Object.values(errors).forEach(function(error){ %>
+                    <div class="ui bottom attached compact warning message">
+                        <i class="warning icon"></i>
+                        <span>
+                          <%= error.msg %>
+                        </span>
+                    </div>
+              <% }); %>
+          </ul>
+          <% } %>
+      </div>
     </div>
+
+    
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
   </body>
