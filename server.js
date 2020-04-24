@@ -1,13 +1,21 @@
 const express = require('express')
 const app = express()
-// const expressValidator = require('express-validator')
+const session = require('express-session')
+const passport = require('passport')
 
 require('./db/db')
 
 app.set('view engine', 'ejs');
 
 app.use(express.json(), express.urlencoded({ extended: true }));
-// app.use(expressValidator)
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    // cookie: { secure: true }
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 const signup = require('./routes/signup')
 const login = require('./routes/login')
