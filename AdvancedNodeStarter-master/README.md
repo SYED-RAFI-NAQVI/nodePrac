@@ -1,2 +1,3 @@
 # AdvancedNodeStarter
-Starting project for a course on Advanced Node @ Udemy
+
+Checkout the Notes on Advance NodeJs. [here](https://github.com/SYED-RAFI-NAQVI/Notes/tree/master/NodeJS)
