@@ -1,10 +1,9 @@
-const Acc = () => {
+const Acc = (props) => {
     return React.createElement("div", {}, [
-        React.createElement("h1", {}, "1+6t"),
-        React.createElement("h2", {}, "Mobile")
+        React.createElement("h1", {}, props.name),
+        React.createElement("h2", {}, props.type)
     ])
 }
-
 
 const App = () => {
     return React.createElement(
@@ -12,8 +11,14 @@ const App = () => {
         {}, // attributes like id's or porps.
         [
             React.createElement("h1", {}, "hello World"), // children
-            React.createElement(Acc),
-            React.createElement(Acc)
+            React.createElement(Acc, {
+                name: "1+6t",
+                type: "mobile"
+            }),
+            React.createElement(Acc, {
+                name: "samsung",
+                type: "mobile"
+            }),
         ]
     );
 };
